@@ -1,4 +1,4 @@
-export const categoryItems = [
+const categoryItems = [
   {
     id: 1,
     categoryName: "All",
@@ -48,3 +48,5 @@ export const categoryItems = [
     categoryName: "Adventure",
   },
 ];
+
+export default categoryItems;

@@ -3,6 +3,7 @@ import "./content.style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectGame } from "../../stores/game";
 import { fetchGames } from "../../services";
+import { increment, decrement } from "../../stores/page";
 
 const Content = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Content = () => {
 
   return (
     <section>
-      <div className="container">
+      <div className="content">
         <div className="game-area">
           {games &&
             games.map((game) => (
@@ -34,8 +35,20 @@ const Content = () => {
             ))}
         </div>
         <div className="button-area">
-          <button className="button">Previous</button>
-          <button className="button">Next</button>
+          <button
+            className="button"
+            onClick={() => (page >= 1 ? dispatch(decrement()) : null)}
+            style={{ display: page === 1 ? "none" : "inline" }}
+          >
+            Previous
+          </button>
+          <button
+            className="button"
+            onClick={() => dispatch(increment())}
+            style={{ display: games.length <= 0 ? "none" : "inline" }}
+          >
+            Next
+          </button>
         </div>
       </div>
     </section>

@@ -1,77 +1,75 @@
-.container {
-    width: 100%;
-    height: 7vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgba(43, 34, 53, 0.49);
-    cursor: pointer;
+.header {
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(43, 34, 53, 0.49);
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 44px;
+  color: white;
+  font-weight: 700;
+  margin-left: 44px;
+  transition: 0.1s;
+  transition-timing-function: linear;
+  animation: color-change 2s linear;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.sub-text {
+  color: white;
+  font-size: 18px;
+  animation: color-change 3s ease-in-out infinite;
+}
+
+@keyframes color-change {
+  0% {
+    color: red;
   }
-  
-  .logo {
-   
-    font-size: 44px;
-    color: white;
-    font-weight: 700;
-    margin-left: 44px;
-    transition: 0.1s;
-    transition-timing-function: linear;
-    animation: color-change 2s  linear;
+  10% {
+    color: rgb(255, 38, 0);
   }
-  
-  .logo:hover {
-    transform: scale(1.1);
+  20% {
+    color: orange;
   }
-  
+  30% {
+    color: rgb(255, 208, 0);
+  }
+  40% {
+    color: yellow;
+  }
+  50% {
+    color: greenyellow;
+  }
+  60% {
+    color: green;
+  }
+  70% {
+    color: rgb(0, 254, 208);
+  }
+  80% {
+    color: rgb(0, 132, 255);
+  }
+  90% {
+    color: rgb(47, 0, 255);
+  }
+  90% {
+    color: purple;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    text-align: center;
+  }
+
   .sub-text {
-    color: white;
-    font-size: 18px;
-    animation: color-change 3s ease-in-out infinite;
+    display: none;
   }
-  
-  @keyframes color-change {
-    0% {
-      color: red;
-    }
-    10% {
-      color: rgb(255, 38, 0);
-    }
-    20% {
-      color: orange;
-    }
-    30% {
-      color: rgb(255, 208, 0);
-    }
-    40% {
-      color: yellow;
-    }
-    50% {
-      color: greenyellow;
-    }
-    60% {
-      color: green;
-    }
-    70% {
-      color: rgb(0, 254, 208);
-    }
-    80% {
-      color: rgb(0, 132, 255);
-    }
-    90% {
-      color: rgb(47, 0, 255);
-    }
-    90% {
-      color: purple;
-    }
-  }
-  
-  @media only screen and (max-width: 600px) {
-    .container {
-      text-align: center;
-    }
-  
-    .sub-text {
-      display: none;
-    }
-  }
-  
+}

@@ -1,19 +1,23 @@
 // Import Swiper React components
 import React from "react";
 import { Navigation } from "swiper/modules";
-import { Swiper } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import categoryItems from "./categoryItems";
 import "swiper/css/navigation";
 import "swiper/css";
 import "./category.style.css";
+import { useDispatch, useSelector } from "react-redux";
+import { changeCategory } from "../../stores/category";
+import { resetPage } from "../../stores/page";
 
 const Category = () => {
-  //   const dispatch = useDispatch();
-  //   const category = useSelector((state) => state.category.category);
+  const dispatch = useDispatch();
+  const category = useSelector((state) => state.category.category);
 
-  //   const handleCategory = (category) => {
-  //     dispatch(changeCategory(category));
-  //     dispatch(resetPage(1));
-  //   };
+  const handleCategory = (category) => {
+    dispatch(changeCategory(category));
+    dispatch(resetPage(1));
+  };
 
   return (
     <nav>
@@ -33,7 +37,7 @@ const Category = () => {
         // onSlideChange={() => console.log("slide change")}
         className="container"
       >
-        {/* {categoryItems &&
+        {categoryItems &&
           categoryItems.map((e) => (
             <SwiperSlide
               key={e.id}
@@ -43,7 +47,7 @@ const Category = () => {
             >
               {e.categoryName}
             </SwiperSlide>
-          ))} */}
+          ))}
       </Swiper>
     </nav>
   );
