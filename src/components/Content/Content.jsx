@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectGame } from "../../stores/game";
 import { fetchGames } from "../../services";
 import { increment, decrement } from "../../stores/page";
+import { Link } from "react-router-dom";
 
 const Content = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,9 @@ const Content = () => {
                 key={game.Md5}
                 onClick={() => handleGame(game)}
               >
-                <img className="image" src={game.Asset[0]} alt={game.Title} />
+                <Link to={`/games/${game.Md5}`}>
+                  <img className="image" src={game.Asset[0]} alt={game.Title} />
+                </Link>
               </div>
             ))}
         </div>
