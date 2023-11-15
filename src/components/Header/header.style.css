@@ -9,6 +9,7 @@
   }
   
   .logo {
+   
     font-size: 44px;
     color: white;
     font-weight: 700;
@@ -22,7 +23,7 @@
     transform: scale(1.1);
   }
   
-  .subText {
+  .sub-text {
     color: white;
     font-size: 18px;
     animation: color-change 3s ease-in-out infinite;
@@ -69,7 +70,7 @@
       text-align: center;
     }
   
-    .subText {
+    .sub-text {
       display: none;
     }
   }
