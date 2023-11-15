@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./gamecontent.style.css";
 import { setIsOpen } from "../../stores/screen";
+import { Helmet } from "react-helmet";
 // import { useRef } from "react";
 
 const GameContent = () => {
@@ -19,6 +20,10 @@ const GameContent = () => {
 
   return (
     <section>
+      <Helmet>
+        <meta charset="utf-8" />
+        <title>Hig Games - {selectedGame.Title}</title>
+      </Helmet>
       <h1
         style={{
           display: isOpen === true ? "none" : "flex",
@@ -57,6 +62,7 @@ const GameContent = () => {
         </button>
         <iframe
           src={gameUrl}
+          title={selectedGame.Title}
           frameBorder={0}
           allowfullscreen
           style={{
