@@ -1,0 +1,77 @@
+.footer {
+    width: 100%;
+    height: 15vh;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(43, 34, 53, 0.49);
+    margin-top: 2%;
+}
+
+
+
+.logo {
+    font-size: 44px;
+    font-weight: 700;
+    color: white;
+}
+
+.sub-text {
+    color: white;
+    font-size: 18px;
+    animation: color-change 3s ease-in-out infinite;
+}
+
+@keyframes color-change {
+    0% { color: red; }
+    10% { color: rgb(255, 38, 0); }
+    20% { color: orange }
+    30% { color: rgb(255, 208, 0); }
+    40% { color: yellow; }
+    50% { color: greenyellow }
+    60% { color: green; }
+    70% { color: rgb(0, 254, 208); }
+    80% { color: rgb(0, 132, 255); }
+    90% { color: rgb(47, 0, 255); }
+    90% { color: purple; }
+  }
+
+
+
+
+.category-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: green;
+}
+
+.category-item {
+    cursor: pointer;
+    color: blue;
+}
+
+
+.contact-area {
+    color: yellow;
+
+}
+
+.contact-title {
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 2px solid yellow;
+}
+
+.contact {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 8%;
+    
+}
+
+
+@media only screen and (max-width: 600px) {
+    .logo {
+       font-size: 28px;
+    }
+}

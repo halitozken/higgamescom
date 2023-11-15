@@ -1,16 +1,20 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
 import App from "./App";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: "*",
+    element: <Navigate to="/games" replace />,
+  },
+  {
+    path: "/games",
     element: <App />,
     errorElement: <NotFound />,
   },
   {
-    path: "/games/:id",
+    path: "/games/:slug",
     element: <Game />,
     errorElement: <NotFound />,
   },

@@ -1,5 +1,6 @@
 import React from "react";
 import "./header.style.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -15,7 +16,9 @@ const Header = () => {
         cursor: "pointer",
       }}
     >
-      <div className="logo">Hig Games</div>
+      <div className="logo">
+        <Link to="/">Hig Games</Link>
+      </div>
       <div className="sub-text">Explore Endless Gaming Adventures</div>
     </div>
   );

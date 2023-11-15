@@ -5,6 +5,7 @@ import { selectGame } from "../../stores/game";
 import { fetchGames } from "../../services";
 import { increment, decrement } from "../../stores/page";
 import { Link } from "react-router-dom";
+import slugify from "slugify";
 
 const Content = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,12 @@ const Content = () => {
                 key={game.Md5}
                 onClick={() => handleGame(game)}
               >
-                <Link to={`/games/${game.Md5}`}>
+                <Link
+                  to={`/games/${slugify(game.Title, {
+                    replacement: "-",
+                    lower: true,
+                  })}`}
+                >
                   <img className="image" src={game.Asset[0]} alt={game.Title} />
                 </Link>
               </div>

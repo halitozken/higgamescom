@@ -3,26 +3,32 @@ import { useDispatch, useSelector } from "react-redux";
 import "./gamecontent.style.css";
 import { setIsOpen } from "../../stores/screen";
 import { Helmet } from "react-helmet";
+import { useParams } from "react-router-dom";
 // import { useRef } from "react";
 
 const GameContent = () => {
+  const dispatch = useDispatch();
+  const params = useParams();
   const selectedGame = useSelector((state) => state.game.selectedGame);
   const isOpen = useSelector((state) => state.screen.isOpen);
-  const dispatch = useDispatch();
 
   const gameUrl =
-    selectedGame.Url + `?gd_sdk_referrer_url=https://www.higgames.com/games/`;
+    selectedGame.Url +
+    `?gd_sdk_referrer_url=https://www.higgames.com/games/${params.slug}`;
 
   // const windowWidth = useRef(window.innerWidth);
   // const windowHeight = useRef(window.innerHeight);
-
-  // console.log(params.id);
 
   return (
     <section>
       <Helmet>
         <meta charset="utf-8" />
         <title>Hig Games - {selectedGame.Title}</title>
+        <meta name="description" content={selectedGame.Description} />
+        <link
+          rel="canonical"
+          href={`http://higgames.com/games/${selectedGame.Md5}`}
+        />
       </Helmet>
       <h1
         style={{
