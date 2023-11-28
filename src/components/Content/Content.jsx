@@ -3,15 +3,16 @@ import "./content.style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectGame } from "../../stores/game";
 import { fetchGames } from "../../services";
-import { increment, decrement } from "../../stores/page";
-import { Link } from "react-router-dom";
-import slugify from "slugify";
+
+import { Link, Navigate, useLocation } from "react-router-dom";
+// import slugify from "slugify";
 
 const Content = () => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.game.game);
-  const page = useSelector((state) => state.page.page);
-  const category = useSelector((state) => state.category.category);
+
+  const page = useLocation().pathname.split("/")[2];
+  const category = useLocation().pathname.split("/")[1];
 
   useEffect(() => {
     dispatch(fetchGames({ page, category }));
@@ -22,45 +23,61 @@ const Content = () => {
   };
 
   return (
-    <section>
+    <main>
       <div className="content">
         <div className="game-area">
-          {games &&
+          {games === undefined ? (
+            <Navigate to="/All/1" />
+          ) : (
             games.map((game) => (
               <div
                 className="game-card"
                 key={game.Md5}
                 onClick={() => handleGame(game)}
               >
-                <Link
-                  to={`/games/${slugify(game.Title, {
-                    replacement: "-",
-                    lower: true,
-                  })}`}
-                >
+                <Link to={`/games/${game.Md5}`}>
                   <img className="image" src={game.Asset[0]} alt={game.Title} />
                 </Link>
+                <h2 className="game-title">{game.Title}</h2>
               </div>
-            ))}
+            ))
+          )}
         </div>
         <div className="button-area">
-          <button
-            className="button"
-            onClick={() => (page >= 1 ? dispatch(decrement()) : null)}
-            style={{ display: page === 1 ? "none" : "inline" }}
+          <Link
+            to={
+              page === undefined
+                ? `/All/${2}`
+                : `/${category}/${Number(page) - 1}`
+            }
           >
-            Previous
-          </button>
-          <button
-            className="button"
-            onClick={() => dispatch(increment())}
-            style={{ display: games.length <= 0 ? "none" : "inline" }}
+            <button
+              className="button"
+              style={{
+                display:
+                  Number(page) === 1 || page === undefined ? "none" : "inline",
+              }}
+            >
+              Previous
+            </button>
+          </Link>
+          <Link
+            to={
+              page === undefined
+                ? `/All/${2}`
+                : `/${category}/${Number(page) + 1}`
+            }
           >
-            Next
-          </button>
+            <button
+              className="button"
+              style={{ display: games.length <= 0 ? "none" : "inline" }}
+            >
+              Next
+            </button>
+          </Link>
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 

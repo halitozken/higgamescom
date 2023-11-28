@@ -1,14 +1,18 @@
+// Import Swiper React components
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/navigation";
 import "swiper/css";
 
-import "./category.style.css";
+import "./mobilecategory.style.css";
 
-import categoryItems from "./categoryItems";
+// Import Swiper styles
+import "swiper/css";
+
 import { Link, useLocation } from "react-router-dom";
+import categoryItems from "../Category/categoryItems";
 
-const Category = () => {
+const MobileCategory = () => {
   const category = useLocation().pathname.split("/")[1];
 
   return (
@@ -20,10 +24,10 @@ const Category = () => {
         }}
         modules={[Navigation]}
         spaceBetween={50}
-        slidesPerView={4}
+        slidesPerView={2}
         navigation
         rewind={true}
-        className="swiper"
+        className="mobile-category"
       >
         {categoryItems &&
           categoryItems.map((e) => (
@@ -34,11 +38,7 @@ const Category = () => {
                 color: category === e.categoryName ? "#ffffff" : null,
               }}
             >
-              <Link
-                to={e.categoryName === "All" ? `/` : `/${e.categoryName}/1`}
-              >
-                {e.categoryName}
-              </Link>
+              <Link to={`/${e.categoryName}/1`}>{e.categoryName}</Link>
             </SwiperSlide>
           ))}
       </Swiper>
@@ -46,4 +46,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default MobileCategory;

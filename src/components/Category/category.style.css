@@ -1,28 +1,27 @@
-.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
+.swiper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.slider-item {
+  font-size: 28px;
+  font-weight: 600;
+  color: orangered;
+  cursor: pointer;
+  transition: 0.1s;
+  transition-timing-function: linear;
+  padding: 4%;
+}
+
+.slider-item:hover {
+  transform: scale(1.2);
+  color: yellow;
+}
+
+@media only screen and (max-width: 600px) {
+  .swiper {
+    display: none;
   }
-  
-  .slider-item {
-    font-size: 28px;
-    font-weight: 600;
-    color: orangered;
-    cursor: pointer;
-    transition: 0.1s;
-    transition-timing-function: linear;
-    padding: 4%;
-  }
-  
-  .slider-item:hover {
-    transform: scale(1.2);
-    color: yellow;
-  }
-  
-  @media only screen and (max-width: 600px) {
-    .container {
-      display: none;
-    }
-  }
-  
+}

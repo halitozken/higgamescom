@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div
+    <header
       className="header"
       style={{
         width: "100%",
@@ -16,11 +16,11 @@ const Header = () => {
         cursor: "pointer",
       }}
     >
-      <div className="logo">
+      <h1 className="logo">
         <Link to="/">Hig Games</Link>
-      </div>
-      <div className="sub-text">Explore Endless Gaming Adventures</div>
-    </div>
+      </h1>
+      <h2 className="sub-text">Explore Endless Gaming Adventures</h2>
+    </header>
   );
 };
 

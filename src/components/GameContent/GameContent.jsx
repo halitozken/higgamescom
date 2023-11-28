@@ -2,35 +2,30 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./gamecontent.style.css";
 import { setIsOpen } from "../../stores/screen";
-import { Helmet } from "react-helmet";
-import { useParams } from "react-router-dom";
+
 // import { useRef } from "react";
 
-const GameContent = () => {
+const GameContent = ({ selectedGame, params }) => {
   const dispatch = useDispatch();
-  const params = useParams();
-  const selectedGame = useSelector((state) => state.game.selectedGame);
   const isOpen = useSelector((state) => state.screen.isOpen);
 
-  const gameUrl =
-    selectedGame.Url +
-    `?gd_sdk_referrer_url=https://www.higgames.com/games/${params.slug}`;
+  // const ref = useRef();
+  // const [gameTitle, setGameTitle] = useState();
+
+  const gameUrl = `https://html5.gamedistribution.com/${params.Md5}/?gd_sdk_referrer_url=https://www.higgames.com/games/${params.Md5}`;
+
+  // useEffect(() => {
+  //   const title = ref.current.title;
+
+  //   setGameTitle(title);
+  // }, []);
 
   // const windowWidth = useRef(window.innerWidth);
   // const windowHeight = useRef(window.innerHeight);
 
   return (
-    <section>
-      <Helmet>
-        <meta charset="utf-8" />
-        <title>Hig Games - {selectedGame.Title}</title>
-        <meta name="description" content={selectedGame.Description} />
-        <link
-          rel="canonical"
-          href={`http://higgames.com/games/${selectedGame.Md5}`}
-        />
-      </Helmet>
-      <h1
+    <main>
+      {/* <h2
         style={{
           display: isOpen === true ? "none" : "flex",
           alignItems: "center",
@@ -41,13 +36,17 @@ const GameContent = () => {
         }}
       >
         {selectedGame.Title}
-      </h1>
-      <div
+      </h2> */}
+      <section
         style={{
           width: isOpen ? "100vw" : "75vw",
           height: isOpen ? "100vh" : "75vh",
           margin: "auto",
           position: "relative",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
         }}
       >
         <button
@@ -70,7 +69,7 @@ const GameContent = () => {
           src={gameUrl}
           title={selectedGame.Title}
           frameBorder={0}
-          allowfullscreen
+          allowfullscreen={true}
           style={{
             display: "flex",
             justifyContent: "center",
@@ -81,9 +80,9 @@ const GameContent = () => {
             height: "100%",
           }}
         ></iframe>
-      </div>
+      </section>
 
-      <div className="wrapper">
+      {/* <div className="wrapper">
         <div className="desc">
           <h3>Description: </h3>
           {selectedGame.Description}
@@ -92,8 +91,8 @@ const GameContent = () => {
           <h3>Instructions: </h3>
           {selectedGame.Instructions}
         </div>
-      </div>
-    </section>
+      </div> */}
+    </main>
   );
 };
 

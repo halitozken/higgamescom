@@ -1,0 +1,22 @@
+.mobile-category {
+    display:none;
+   
+}
+
+.slider-item {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile-category {
+        display: flex;
+        width: 100%;
+        margin: 24px 0px;
+    }
+
+    .slider-item {
+        font-size: 18px;
+        padding-left: 12%;
+        font-weight: 700;
+    }
+}

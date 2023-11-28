@@ -12,7 +12,6 @@
   font-size: 44px;
   color: white;
   font-weight: 700;
-  margin-left: 44px;
   transition: 0.1s;
   transition-timing-function: linear;
   animation: color-change 2s linear;
