@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Game from "./pages/Game";
 import NotFound from "./pages/NotFound";
 import App from "./App";
-import GamesByCategoryAndPage from "./pages/GamesByCategoryAndPage";
+
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
   },
   {
     path: "/:category/:page",
-    element: <GamesByCategoryAndPage />,
+    element: <App />,
     errorElement: <NotFound />,
   },
   {

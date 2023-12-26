@@ -3,9 +3,8 @@ import "./content.style.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectGame } from "../../stores/game";
 import { fetchGames } from "../../services";
-
 import { Link, Navigate, useLocation } from "react-router-dom";
-// import slugify from "slugify";
+import Image from "../Image/Image";
 
 const Content = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const Content = () => {
 
   return (
     <main>
-      <div className="content">
+      <article className="content">
         <div className="game-area">
           {games === undefined ? (
             <Navigate to="/All/1" />
@@ -36,7 +35,7 @@ const Content = () => {
                 onClick={() => handleGame(game)}
               >
                 <Link to={`/games/${game.Md5}`}>
-                  <img className="image" src={game.Asset[0]} alt={game.Title} />
+                  <Image game={game} />
                 </Link>
                 <h2 className="game-title">{game.Title}</h2>
               </div>
@@ -76,7 +75,7 @@ const Content = () => {
             </button>
           </Link>
         </div>
-      </div>
+      </article>
     </main>
   );
 };

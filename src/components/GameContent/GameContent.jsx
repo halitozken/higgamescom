@@ -1,27 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
 import "./gamecontent.style.css";
-import { setIsOpen } from "../../stores/screen";
 
-// import { useRef } from "react";
+import { useRef } from "react";
 
 const GameContent = ({ selectedGame, params }) => {
-  const dispatch = useDispatch();
-  const isOpen = useSelector((state) => state.screen.isOpen);
-
-  // const ref = useRef();
-  // const [gameTitle, setGameTitle] = useState();
-
   const gameUrl = `https://html5.gamedistribution.com/${params.Md5}/?gd_sdk_referrer_url=https://www.higgames.com/games/${params.Md5}`;
 
-  // useEffect(() => {
-  //   const title = ref.current.title;
-
-  //   setGameTitle(title);
-  // }, []);
-
-  // const windowWidth = useRef(window.innerWidth);
-  // const windowHeight = useRef(window.innerHeight);
+  const windowWidth = useRef(window.innerWidth).current;
 
   return (
     <main>
@@ -39,32 +24,11 @@ const GameContent = ({ selectedGame, params }) => {
       </h2> */}
       <section
         style={{
-          width: isOpen ? "100vw" : "75vw",
-          height: isOpen ? "100vh" : "75vh",
+          width: windowWidth <= 600 ? "100vw" : "60vw",
+          height: "100vh",
           margin: "auto",
-          position: "relative",
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
         }}
       >
-        <button
-          style={{
-            position: "absolute",
-            right: "0",
-            zIndex: "2",
-            width: "100px",
-            height: "35px",
-            border: "none",
-            fontWeight: "bold",
-            backgroundColor: "orangered",
-            color: "white",
-          }}
-          onClick={() => dispatch(setIsOpen())}
-        >
-          {isOpen === true ? "Exit" : "Full Screen"}
-        </button>
         <iframe
           src={gameUrl}
           title={selectedGame.Title}
@@ -75,23 +39,11 @@ const GameContent = ({ selectedGame, params }) => {
             justifyContent: "center",
             alignItems: "center",
             margin: "auto",
-            marginTop: "2%",
             width: "100%",
             height: "100%",
           }}
-        ></iframe>
+        />
       </section>
-
-      {/* <div className="wrapper">
-        <div className="desc">
-          <h3>Description: </h3>
-          {selectedGame.Description}
-        </div>
-        <div className="inst">
-          <h3>Instructions: </h3>
-          {selectedGame.Instructions}
-        </div>
-      </div> */}
     </main>
   );
 };

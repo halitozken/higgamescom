@@ -9,13 +9,20 @@ import { useParams } from "react-router-dom";
 const Game = () => {
   const selectedGame = useSelector((state) => state.game.selectedGame);
   const params = useParams();
+
+  console.log(selectedGame.Tag);
+
   return (
-    <>
+    <main>
       <Helmet>
         <meta charset="utf-8" />
-        <title>Hig Games - {selectedGame.Title}</title>
+        <title>{selectedGame.Title.toUpperCase()} - Hig Games</title>
         <meta name="description" content={selectedGame.Description} />
-        <link rel="canonical" href={`https://higgames.com/game`} />
+        <meta name="keywords" content={selectedGame.Tag} />
+        <link
+          rel="canonical"
+          href={`https://higgames.com/games/${selectedGame.Md5}`}
+        />
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186709846298354"
@@ -25,7 +32,7 @@ const Game = () => {
       <Header />
       <GameContent selectedGame={selectedGame} params={params} />
       <Footer />
-    </>
+    </main>
   );
 };
 

@@ -78,12 +78,14 @@
 
 @media only screen and (max-width: 600px) {
   .content {
-    width: 100%;
+    width:100%;
+    margin: auto;
+    display: block;
   }
   
   .game-card {
     width: 40%;
-    height: 14vh;
+    height: 12vh;
   }
 
   .button-area {

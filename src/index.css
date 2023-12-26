@@ -12,6 +12,7 @@
   overflow-x: hidden;
   background: rgb(35,193,189);
   background: linear-gradient(90deg, rgba(35,193,189,1) 0%, rgba(40,162,210,1) 100%);
+  scroll-behavior: smooth;
 }
 
 a {

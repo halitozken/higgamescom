@@ -12,7 +12,6 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import gameReducer from "./game";
-import screenReducer from "./screen";
 
 const persistConfig = {
   key: "root",
@@ -25,7 +24,6 @@ const persistedReducer = persistReducer(persistConfig, gameReducer);
 export const store = configureStore({
   reducer: {
     game: persistedReducer,
-    screen: screenReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const NotFound = () => {
   const path = useLocation().pathname;
-  console.log(path);
+
   return (
     <div className="main">
       <Header />

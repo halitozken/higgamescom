@@ -19,6 +19,10 @@ function App() {
           name="description"
           content="Unlock the exciting universe of free online games! Explore the most popular free online games. Create your own gaming experience and find your place in this fun world."
         />
+        <meta
+          name="keywords"
+          content="oyun, oyunlar, ücretsiz oyunlar, oyunu, oyun oyna, iki kişilik oyunlar, online game, online games, flash game, flash games"
+        />
         <link rel="canonical" href="https://higgames.com/" />
       </Helmet>
       <Header />

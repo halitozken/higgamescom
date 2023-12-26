@@ -5,12 +5,11 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="logo-area">
-        <div className="logo">Hig Games</div>
-        {/* <div className="sub-text">Best Games For You</div> */}
+        <h4 className="logo">Hig Games</h4>
       </div>
       <div className="contact-area">
         <div className="contact-title">Contact</div>
-        <div className="contact">info@higgames.com</div>
+        <h5 className="contact">info@higgames.com</h5>
       </div>
     </footer>
   );

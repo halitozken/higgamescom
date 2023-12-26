@@ -1,0 +1,9 @@
+.image {
+    width: 14vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .image {
+        width: 100%;
+    }
+}
