@@ -9,7 +9,7 @@ import { UseFetch, UseFetchByCategory } from "../../useFetch";
 
 const Content = () => {
   const [games, setGames] = useState([]);
-  const history = useNavigate();
+  const navigate = useNavigate();
   const pathname = useLocation().pathname;
 
   const searchParams = useSearchParams();
@@ -20,7 +20,7 @@ const Content = () => {
 
   const createQueryString = useCallback(
     (name, value) => {
-      const params = new URLSearchParams(searchParams);
+      const params = new URLSearchParams(searchParams.toString());
       params.set(name, value);
 
       return params.toString();
@@ -73,9 +73,7 @@ const Content = () => {
             className="button"
             style={{ display: page === 1 ? "none" : "inline" }}
             onClick={() => {
-              history.push(
-                pathname + "?" + createQueryString("page", page - 1)
-              );
+              navigate(pathname + "?" + createQueryString("page", page - 1));
             }}
           >
             Previous
@@ -84,9 +82,7 @@ const Content = () => {
             className="button"
             style={{ display: games.length <= 0 ? "none" : "inline" }}
             onClick={() => {
-              history.push(
-                pathname + "?" + createQueryString("page", page + 1)
-              );
+              navigate(pathname + "?" + createQueryString("page", page + 1));
             }}
           >
             Next
