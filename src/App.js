@@ -45,7 +45,7 @@ function App() {
           href={
             search === ""
               ? `https://higgames.com/`
-              : `https://higgames.com/games/${search}`
+              : `https://higgames.com/games${search}`
           }
         />
       </Helmet>
