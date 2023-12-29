@@ -1,52 +1,57 @@
-const categoryItems = [
+export const categoryItems = [
   {
-    id: 1,
-    categoryName: "All",
+    id: 0,
+    categoryName: "all",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
-    id: 2,
-    categoryName: "Cooking",
+    id: 13,
+    categoryName: "puzzle",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
-    id: 3,
-    categoryName: "Puzzle",
-  },
-  {
-    id: 4,
-    categoryName: "Casual",
+    id: 14,
+    categoryName: "racing",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
     id: 5,
-    categoryName: "Battle",
+    categoryName: "arcade",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
-    id: 6,
-    categoryName: "Football",
+    id: 16,
+    categoryName: "soccer",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
-    id: 7,
-    categoryName: "Basketball",
-  },
-  {
-    id: 8,
-    categoryName: "Dress-up",
-  },
-  {
-    id: 9,
-    categoryName: "Educational",
+    id: 17,
+    categoryName: "sports",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
     id: 10,
-    categoryName: "Simulation",
+    categoryName: "girls",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
-    id: 11,
-    categoryName: "Quiz",
+    id: 7,
+    categoryName: "boys",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  },
+  {
+    id: 9,
+    categoryName: "cooking",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+  },
+  {
+    id: 18,
+    categoryName: "stickman",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
   {
     id: 12,
-    categoryName: "Adventure",
+    categoryName: "multiplayer",
+    page: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
 ];
-
-export default categoryItems;

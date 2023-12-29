@@ -11,12 +11,12 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/:category/:page",
+    path: "/games",
     element: <App />,
     errorElement: <NotFound />,
   },
   {
-    path: "/games/:Md5",
+    path: "/:id",
     element: <Game />,
     errorElement: <NotFound />,
   },

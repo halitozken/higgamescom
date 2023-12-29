@@ -5,10 +5,11 @@ import "swiper/css";
 
 import "./category.style.css";
 
-import categoryItems from "./categoryItems";
-import { Link, useLocation } from "react-router-dom";
+import { categoryItems } from "./categoryItems";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 const Category = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const category = useLocation().pathname.split("/")[1];
 
   return (
@@ -35,9 +36,13 @@ const Category = () => {
               }}
             >
               <Link
-                to={e.categoryName === "All" ? `/` : `/${e.categoryName}/1`}
+                to={{
+                  pathname: "/games",
+                  search: `?category=${e.categoryName}&page=${1}`,
+                }}
               >
-                {e.categoryName}
+                {e.categoryName.charAt(0).toUpperCase() +
+                  e.categoryName.slice(1)}
               </Link>
             </SwiperSlide>
           ))}

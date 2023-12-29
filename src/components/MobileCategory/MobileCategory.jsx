@@ -10,7 +10,7 @@ import "./mobilecategory.style.css";
 import "swiper/css";
 
 import { Link, useLocation } from "react-router-dom";
-import categoryItems from "../Category/categoryItems";
+import { categoryItems } from "../Category/categoryItems";
 
 const MobileCategory = () => {
   const category = useLocation().pathname.split("/")[1];

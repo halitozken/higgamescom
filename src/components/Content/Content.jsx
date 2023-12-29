@@ -1,79 +1,96 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./content.style.css";
-import { useDispatch, useSelector } from "react-redux";
-import { selectGame } from "../../stores/game";
-import { fetchGames } from "../../services";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 import { Link, Navigate, useLocation } from "react-router-dom";
 import Image from "../Image/Image";
+import { categoryItems } from "../Category/categoryItems";
+import { UseFetch, UseFetchByCategory } from "../../useFetch";
 
 const Content = () => {
-  const dispatch = useDispatch();
-  const games = useSelector((state) => state.game.game);
+  const [games, setGames] = useState([]);
+  const history = useNavigate();
+  const pathname = useLocation().pathname;
 
-  const page = useLocation().pathname.split("/")[2];
-  const category = useLocation().pathname.split("/")[1];
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
+  const category = params.get("category");
+  const page = parseInt(params.get("page"), 10) || 1;
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
 
   useEffect(() => {
-    dispatch(fetchGames({ page, category }));
-  }, [page, category]);
+    const fetchGames = async () => {
+      if (category !== null && page !== null) {
+        const categoryName = categoryItems.find(
+          (item) => item.categoryName === category
+        );
 
-  const handleGame = (game) => {
-    dispatch(selectGame(game));
-  };
+        const categoryId = categoryName.id;
+        const number = "50";
+
+        setGames(await UseFetchByCategory(categoryId, number, page));
+      } else {
+        const number = "50";
+        setGames(await UseFetch(number, page));
+      }
+    };
+
+    fetchGames();
+  }, [category, page]);
 
   return (
     <main>
       <article className="content">
         <div className="game-area">
-          {games === undefined ? (
-            <Navigate to="/All/1" />
-          ) : (
+          {games &&
             games.map((game) => (
-              <div
-                className="game-card"
-                key={game.Md5}
-                onClick={() => handleGame(game)}
-              >
-                <Link to={`/games/${game.Md5}`}>
-                  <Image game={game} />
+              <div className="game-card" key={game.id}>
+                <Link to={`/${game.id}`}>
+                  <img
+                    className="image"
+                    src={game.thumb}
+                    alt={game.title}
+                    width={100}
+                    height={100}
+                  />
+                  <h3 className="game-title">{game.title}</h3>
                 </Link>
-                <h2 className="game-title">{game.Title}</h2>
               </div>
-            ))
-          )}
+            ))}
         </div>
         <div className="button-area">
-          <Link
-            to={
-              page === undefined
-                ? `/All/${2}`
-                : `/${category}/${Number(page) - 1}`
-            }
+          <button
+            className="button"
+            style={{ display: page === 1 ? "none" : "inline" }}
+            onClick={() => {
+              history.push(
+                pathname + "?" + createQueryString("page", page - 1)
+              );
+            }}
           >
-            <button
-              className="button"
-              style={{
-                display:
-                  Number(page) === 1 || page === undefined ? "none" : "inline",
-              }}
-            >
-              Previous
-            </button>
-          </Link>
-          <Link
-            to={
-              page === undefined
-                ? `/All/${2}`
-                : `/${category}/${Number(page) + 1}`
-            }
+            Previous
+          </button>
+          <button
+            className="button"
+            style={{ display: games.length <= 0 ? "none" : "inline" }}
+            onClick={() => {
+              history.push(
+                pathname + "?" + createQueryString("page", page + 1)
+              );
+            }}
           >
-            <button
-              className="button"
-              style={{ display: games.length <= 0 ? "none" : "inline" }}
-            >
-              Next
-            </button>
-          </Link>
+            Next
+          </button>
         </div>
       </article>
     </main>
