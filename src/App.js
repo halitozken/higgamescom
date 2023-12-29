@@ -7,9 +7,12 @@ import "./app.style.css";
 
 import Footer from "./components/Footer/Footer";
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 import MobileCategory from "./components/MobileCategory/MobileCategory";
 
 function App() {
+  const search = useLocation().search;
+
   return (
     <main>
       <Helmet>
@@ -23,7 +26,19 @@ function App() {
           name="keywords"
           content="oyun, oyunlar, ücretsiz oyunlar, oyunu, oyun oyna, iki kişilik oyunlar, online game, online games, flash game, flash games"
         />
-        <link rel="canonical" href="https://higgames.com/" />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186709846298354"
+          crossorigin="anonymous"
+        ></script>
+        <link
+          rel="canonical"
+          href={
+            search === ""
+              ? `https://higgames.com/`
+              : `https://higgames.com/games/${search}`
+          }
+        />
       </Helmet>
       <Header />
       <Category />

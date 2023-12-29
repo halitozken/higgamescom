@@ -10,8 +10,11 @@ import { UseFetch, UseFetchByCategory } from "../../useFetch";
 const Content = () => {
   const [games, setGames] = useState([]);
   const navigate = useNavigate();
-  const pathname = useLocation().pathname;
+  const location = useLocation();
+  const pathname = location.pathname;
 
+  const search = location.search;
+  const [parameters, setParameters] = useSearchParams();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
 
@@ -78,11 +81,16 @@ const Content = () => {
           >
             Previous
           </button>
+
           <button
             className="button"
             style={{ display: games.length <= 0 ? "none" : "inline" }}
             onClick={() => {
-              navigate(pathname + "?" + createQueryString("page", page + 1));
+              search === ""
+                ? navigate(pathname + "?category=all&page=2")
+                : navigate(
+                    pathname + "?" + createQueryString("page", page + 1)
+                  );
             }}
           >
             Next
