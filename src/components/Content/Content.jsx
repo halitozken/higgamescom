@@ -2,8 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import "./content.style.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { Link, Navigate, useLocation } from "react-router-dom";
-import Image from "../Image/Image";
+import { Link, useLocation } from "react-router-dom";
 import { categoryItems } from "../Category/categoryItems";
 import { UseFetch, UseFetchByCategory } from "../../useFetch";
 
@@ -14,7 +13,7 @@ const Content = () => {
   const pathname = location.pathname;
 
   const search = location.search;
-  const [parameters, setParameters] = useSearchParams();
+
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
 
@@ -87,7 +86,7 @@ const Content = () => {
             style={{ display: games.length <= 0 ? "none" : "inline" }}
             onClick={() => {
               search === ""
-                ? navigate(pathname + "?category=all&page=2")
+                ? navigate(pathname + "games?category=all&page=2")
                 : navigate(
                     pathname + "?" + createQueryString("page", page + 1)
                   );

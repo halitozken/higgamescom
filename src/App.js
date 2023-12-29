@@ -7,17 +7,26 @@ import "./app.style.css";
 
 import Footer from "./components/Footer/Footer";
 import { Helmet } from "react-helmet-async";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import MobileCategory from "./components/MobileCategory/MobileCategory";
 
 function App() {
   const search = useLocation().search;
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+  const category = params.get("category");
 
   return (
     <main>
       <Helmet>
         <meta charset="utf-8" />
-        <title>Hig Games - Explore Endless Gaming Adventures</title>
+        <title>
+          Hig Games -
+          {category === null
+            ? "All"
+            : category.charAt(0).toUpperCase() + category.slice(1)}
+          - Free Online Games - Explore Endless Gaming Adventures
+        </title>
         <meta
           name="description"
           content="Unlock the exciting universe of free online games! Explore the most popular free online games. Create your own gaming experience and find your place in this fun world."

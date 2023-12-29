@@ -38,7 +38,15 @@ const MobileCategory = () => {
                 color: category === e.categoryName ? "#ffffff" : null,
               }}
             >
-              <Link to={`/${e.categoryName}/1`}>{e.categoryName}</Link>
+              <Link
+                to={{
+                  pathname: "/games",
+                  search: `?category=${e.categoryName}&page=${1}`,
+                }}
+              >
+                {e.categoryName.charAt(0).toUpperCase() +
+                  e.categoryName.slice(1)}
+              </Link>
             </SwiperSlide>
           ))}
       </Swiper>
