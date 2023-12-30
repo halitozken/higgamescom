@@ -9,9 +9,6 @@ import { categoryItems } from "./categoryItems";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 
 const Category = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const category = useLocation().pathname.split("/")[1];
-
   return (
     <nav>
       <Swiper
@@ -28,13 +25,7 @@ const Category = () => {
       >
         {categoryItems &&
           categoryItems.map((e) => (
-            <SwiperSlide
-              key={e.id}
-              className="slider-item"
-              style={{
-                color: category === e.categoryName ? "#ffffff" : null,
-              }}
-            >
+            <SwiperSlide key={e.id} className="slider-item">
               <Link
                 to={{
                   pathname: "/games",

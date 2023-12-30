@@ -22,6 +22,7 @@ const GameContent = ({ item }) => {
           src={item.url}
           frameBorder={0}
           allowFullScreen
+          loading="lazy"
           title={item.title}
         />
       </div>

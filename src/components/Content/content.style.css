@@ -1,5 +1,5 @@
 .content {
-  width: 85%;
+  width: 90%;
   height: auto;
   margin: auto;
   display: flex;
@@ -20,7 +20,7 @@
 .button {
   width: 12vw;
   height: 7vh;
-  border: none;
+  border-radius: 1em;
   background-color: chocolate;
   font-size: 24px;
   font-weight: 600;
@@ -40,7 +40,7 @@
 }
 
 .game-card {
-  width: 14vw;
+  width: 10vw;
   height: 16vh;
   margin: 10px;
   border-radius: 1em;
@@ -50,9 +50,6 @@
   transition-timing-function: linear;
   transition: 0.3s;
   position: relative;
-  display:flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .game-title {
@@ -65,8 +62,8 @@
  
 }
 .image {
-  width: 14vw;
-  height: auto;
+  width: 100%;
+  height: 100%;
 }
 
 .game-card:hover {

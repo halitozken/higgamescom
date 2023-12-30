@@ -10,7 +10,6 @@ const Game = () => {
   const id = useParams().id;
   const [game, setGame] = useState([]);
 
-
   useEffect(() => {
     const fetchGame = async () => {
       setGame(await UseFetchById(id));

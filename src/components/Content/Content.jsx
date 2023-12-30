@@ -5,9 +5,13 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
 import { categoryItems } from "../Category/categoryItems";
 import { UseFetch, UseFetchByCategory } from "../../useFetch";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Content = () => {
   const [games, setGames] = useState([]);
+
+  //const windowSize = useRef([window.innerWidth, window.innerHeight]);
+
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
@@ -19,6 +23,8 @@ const Content = () => {
 
   const category = params.get("category");
   const page = parseInt(params.get("page"), 10) || 1;
+
+  const number = "72";
 
   const createQueryString = useCallback(
     (name, value) => {
@@ -38,11 +44,9 @@ const Content = () => {
         );
 
         const categoryId = categoryName.id;
-        const number = "50";
 
         setGames(await UseFetchByCategory(categoryId, number, page));
       } else {
-        const number = "50";
         setGames(await UseFetch(number, page));
       }
     };
@@ -58,7 +62,7 @@ const Content = () => {
             games.map((game) => (
               <div className="game-card" key={game.id}>
                 <Link to={`/${game.id}`}>
-                  <img
+                  <LazyLoadImage
                     className="image"
                     src={game.thumb}
                     alt={game.title}
