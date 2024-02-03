@@ -16,6 +16,7 @@ const Game = () => {
     };
 
     fetchGame();
+    // eslint-disable-next-line
   }, []);
 
   return (

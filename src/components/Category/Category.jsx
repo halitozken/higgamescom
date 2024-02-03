@@ -6,15 +6,15 @@ import "swiper/css";
 import "./category.style.css";
 
 import { categoryItems } from "./categoryItems";
-import { Link, useLocation, useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Category = () => {
   return (
     <nav>
       <Swiper
         style={{
-          "--swiper-navigation-color": "red",
-          "--swiper-pagination-color": "red",
+          "--swiper-navigation-color": "lightblue",
+          "--swiper-pagination-color": "lightblue",
         }}
         modules={[Navigation]}
         spaceBetween={50}

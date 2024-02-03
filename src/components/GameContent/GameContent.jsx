@@ -1,40 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import "./gamecontent.style.css";
 
 const GameContent = ({ item }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <section className="content">
-      {/* <h3
+      <h3 className="title">{item.title}</h3>
+      <div
+        className="iframe"
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "24px",
-          fontWeight: "700",
-          margin: "2%",
+          width: isModalOpen ? null : "70vw",
+          position: isModalOpen ? "fixed" : null,
+          top: isModalOpen ? "0" : null,
+          bottom: isModalOpen ? "0" : null,
+          right: isModalOpen ? "0" : null,
+          left: isModalOpen ? "0" : null,
         }}
       >
-        {item.title}
-      </h3> */}
-      <div className="iframe">
-        <iframe
-          style={{ width: "100%", height: "100%" }}
-          src={item.url}
-          frameBorder={0}
-          allowFullScreen
-          loading="lazy"
-          title={item.title}
-        />
-      </div>
-
-      <div className="wrapper">
-        <div className="desc">
-          Description: <br />
-          {item.description}
-        </div>
-        <div className="inst">
-          Instructions: <br />
-          {item.instructions}
+        <button
+          className="fullscreen"
+          style={{
+            position: isModalOpen ? "absolute" : null,
+            width: isModalOpen ? "auto" : null,
+            backgroundColor: isModalOpen
+              ? "rgb(255, 0, 0)"
+              : "rgb(216, 116, 116)",
+          }}
+          onClick={handleModal}
+        >
+          {isModalOpen ? "Exit" : "Play Full Screen"}
+        </button>
+        <div className="modal">
+          <iframe
+            style={{
+              width: isModalOpen ? "100vw" : "100%",
+              height: isModalOpen ? "100vh" : "75vh",
+              margin: "auto",
+              marginBottom: "7%",
+            }}
+            src={item.url}
+            frameborder={0}
+            allowFullScreen
+            allow="fullscreen"
+            loading="lazy"
+            title={item.title}
+          />
         </div>
       </div>
     </section>
