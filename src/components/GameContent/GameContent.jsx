@@ -1,8 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./gamecontent.style.css";
 
 const GameContent = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth <= 600) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [window.innerWidth]);
 
   const handleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -14,7 +24,8 @@ const GameContent = ({ item }) => {
       <div
         className="iframe"
         style={{
-          width: isModalOpen ? null : "70vw",
+          width: isMobile ? "100vw" : "70vw",
+
           position: isModalOpen ? "fixed" : null,
           top: isModalOpen ? "0" : null,
           bottom: isModalOpen ? "0" : null,
@@ -44,7 +55,7 @@ const GameContent = ({ item }) => {
               marginBottom: "7%",
             }}
             src={item.url}
-            frameborder={0}
+            frameBorder={0}
             allowFullScreen
             allow="fullscreen"
             loading="lazy"

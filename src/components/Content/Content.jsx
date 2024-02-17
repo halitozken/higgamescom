@@ -7,6 +7,7 @@ import { categoryItems } from "../Category/categoryItems";
 import { UseFetch, UseFetchByCategory } from "../../useFetch";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
+
 const Content = () => {
   const [games, setGames] = useState([]);
 
@@ -25,6 +26,13 @@ const Content = () => {
   const page = parseInt(params.get("page"), 10) || 1;
 
   const number = "72";
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   const createQueryString = useCallback(
     (name, value) => {
@@ -80,6 +88,7 @@ const Content = () => {
             style={{ display: page === 1 ? "none" : "inline" }}
             onClick={() => {
               navigate(pathname + "?" + createQueryString("page", page - 1));
+              scrollToTop();
             }}
           >
             Previous
@@ -94,6 +103,7 @@ const Content = () => {
                 : navigate(
                     pathname + "?" + createQueryString("page", page + 1)
                   );
+              scrollToTop();
             }}
           >
             Next
