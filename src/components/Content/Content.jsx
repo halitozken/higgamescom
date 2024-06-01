@@ -24,7 +24,7 @@ const Content = () => {
 
   const category = params.get("category");
   const page = parseInt(params.get("page"), 10) || 1;
-
+  console.log(category);
   const number = "72";
 
   const scrollToTop = () => {
